@@ -1,4 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.navbar-bg {
+  background-color: #03153e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bg-section {
+  background: url(https://mis.benedictocollege.edu.ph/assets/bene-school-815be6299a10bcc76c09c819b5a1f49beb216565f77ba611270de3b63f1b33f6.jpg)
+    no-repeat bottom / cover;
+  width: 100%;
+  height: 100vh;
+}
+
+.jqx-scheduler-edit-dialog-label {
+  width: unset !important;
+}
+
+.center-fixed-dialog {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important; /* Remove any margins */
+}
+
+.alert-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  max-width: 400px;
+}
+
+a > img,
+button > img {
+  width: 30px;
+  height: 30px;
+}
+
+.main-board {
+  margin-left: 16rem;
+}
+
+.schedule-button {
+  outline: none;
+}
+
+.logout-button {
+  width: 100%;
+}
+
+.are-you {
+  font-size: 14px;
+}
+
+.logged-as {
+  font-size: 12px;
+}

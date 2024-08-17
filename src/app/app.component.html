@@ -1,15 +1,136 @@
-<!-- nav -->
-<!-- <nav class="navbar navbar-expand navbar-dark bg-dark px-3" *ngIf="user">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
-        <button class="btn btn-link nav-item nav-link" (click)="logout()">Logout</button>
-    </div>
-</nav> -->
-
 <!-- main app container -->
 <!-- <div class="container">
-    <alert></alert>
-    <router-outlet></router-outlet>
-</div> -->
-<app-menubar></app-menubar>
+  <alert></alert>
+  <router-outlet></router-outlet>
+</div>
+<app-menubar></app-menubar> -->
+<!-- (click)="sharedService.closeDialogOnNavClick()"  -->
+
+<div class="app-container">
+  <!-- main nav -->
+  <div class="navbar navbar-expand navbar-bg text-light p-3" *ngIf="user">
+    <div class="navbar-nav fs-6 d-flex gap-2 align-items-center">
+      <img
+        src="https://mis.benedictocollege.edu.ph/assets/logo-21a9a44cc070aa7b0436551dba367c97e53bce3864cb2151d4ed24682b8ae540.png"
+        alt="Benedicto Logo"
+        class="logo-img"
+        style="width: 100%; margin: 0 1rem 0 1.5rem"
+      />
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-item nav-link d-flex gap-2 align-items-center text-light"
+      >
+        Home</a
+      >
+      <a
+        routerLink="/teachers"
+        routerLinkActive="active"
+        class="nav-item nav-link d-flex gap-2 align-items-center text-light"
+      >
+        Teachers</a
+      >
+      <a
+        routerLink="/profile"
+        routerLinkActive="active"
+        class="nav-item nav-link d-flex gap-2 align-items-center text-light"
+        >Profile</a
+      >
+
+      <!-- <a
+          *ngIf="account.role === Role.Admin"
+          routerLink="/admin"
+          routerLinkActive="active"
+      
+          class="nav-item nav-link d-flex gap-2 align-items-center text-light"
+          >Admin</a
+        > -->
+      <a
+        *ngIf="user.user?.role === Role.Admin"
+        routerLink="/prospectus"
+        routerLinkActive="active"
+        class="nav-item nav-link d-flex gap-2 align-items-center text-light"
+        >Prospectus</a
+      >
+      <a
+        class="nav-item nav-link d-flex gap-2 align-items-center text-light"
+        routerLink="/schedule"
+        routerLinkActive="active"
+        *ngIf="user.user?.role === Role.Admin"
+      >
+        Schedule
+      </a>
+      <!-- <a
+            *ngIf="account.role === Role.Admin"
+            routerLink="/schedule"
+            routerLinkActive="active"
+            class="nav-item nav-link"
+            >Schedule</a
+          > -->
+    </div>
+    <div class="">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-danger d-flex align-items-center justify-content-center gap-1 p-2"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <img src="../assets/logout.png" alt="Logout Icon" />Logout
+      </button>
+
+      <div
+        class="modal"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="border: none">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body text-center">
+              <h5 class="text-black fw-bold">
+                You are attempting to log out of Benedicto College Scheduling
+              </h5>
+              <p class="text-body are-you">
+                Are you sure you want to continue?
+              </p>
+
+              <p class="text-body logged-as">
+                Logged In as {{ user.user?.firstName }}
+              </p>
+              <a
+                type="button"
+                (click)="logout()"
+                class="btn btn-danger logout-button"
+                data-bs-dismiss="modal"
+                >Logout</a
+              >
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- subnav router outlet -->
+  <router-outlet name="subnav"></router-outlet>
+  <!-- global alert -->
+  <alert class=".alert-container"></alert>
+
+  <!-- main router outlet -->
+
+  <router-outlet></router-outlet>
+</div>

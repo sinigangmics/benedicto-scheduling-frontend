@@ -25,16 +25,19 @@ import { AccountService } from '@app/_services';
 // }
 
 export function jwtInterceptor(request: HttpRequest<any>, next: HttpHandlerFn) {
-    // add auth header with jwt if user is logged in and request is to the api url
-    const accountService = inject(AccountService);
-    const user = accountService.userValue;
-    const isLoggedIn = user?.access_token;
-    const isApiUrl = request.url.startsWith(environment.apiUrl);
-    if (isLoggedIn && isApiUrl) {
-        request = request.clone({
-            setHeaders: { Authorization: `Bearer ${user?.access_token}` }
-        });
-    }
+  // add auth header with jwt if user is logged in and request is to the api url
+  const accountService = inject(AccountService);
+  const user = accountService.userValue;
+  const isLoggedIn = user?.access_token;
+  const isApiUrl = request.url.startsWith(environment.apiUrl);
+  if (isLoggedIn && isApiUrl) {
+    request = request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${user?.access_token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 
-    return next(request);
+  return next(request);
 }
