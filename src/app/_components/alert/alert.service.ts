@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { Alert, AlertType } from '@app/_models';
+import { Alert, AlertType, AlertOptions } from './alert.model';
 
 @Injectable({ providedIn: 'root' })
 export class AlertService {
@@ -15,26 +15,25 @@ export class AlertService {
   }
 
   // convenience methods
-  success(message: string, options?: any) {
+  success(message: string, options?: AlertOptions) {
     this.alert(new Alert({ ...options, type: AlertType.Success, message }));
   }
 
-  error(message: string, options?: any) {
+  error(message: string, options?: AlertOptions) {
     this.alert(new Alert({ ...options, type: AlertType.Error, message }));
   }
 
-  info(message: string, options?: any) {
+  info(message: string, options?: AlertOptions) {
     this.alert(new Alert({ ...options, type: AlertType.Info, message }));
   }
 
-  warn(message: string, options?: any) {
+  warn(message: string, options?: AlertOptions) {
     this.alert(new Alert({ ...options, type: AlertType.Warning, message }));
   }
 
-  // core alert method
+  // main alert method
   alert(alert: Alert) {
     alert.id = alert.id || this.defaultId;
-    alert.autoClose = alert.autoClose === undefined ? true : alert.autoClose;
     this.subject.next(alert);
   }
 

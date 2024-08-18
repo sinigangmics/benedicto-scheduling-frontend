@@ -1,0 +1,38 @@
+<h1>Teachers</h1>
+<p>This section can only be accessed by administrators.</p>
+<p>
+  <a routerLink="add" class="btn btn-success">Add Teacher</a>
+</p>
+<div class="container mt-5 p-0">
+  <div class="main-body p-0">
+    <!-- your-component.component.html -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teacher of teachers">
+          <th scope="row">{{ teacher.id }}</th>
+          <td>{{ teacher.firstName }}</td>
+          <td>{{ teacher.lastName }}</td>
+          <td>{{ teacher.email }}</td>
+          <td>{{ teacher.address }}</td>
+          <td>{{ teacher.phoneNumber }}</td>
+          <td>
+            <!-- <a class="btn btn-primary" routerLink="edit/{{ teacher.id }}"
+              >Edit</a
+            > -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

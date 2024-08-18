@@ -56,6 +56,10 @@ export class AccountService {
     return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
   }
 
+  create(params: any) {
+    return this.http.post(baseUrl, params);
+  }
+
   update(id: string, params: any) {
     console.log('user update...', params);
     return this.http.put(`${environment.apiUrl}/users/${id}`, params).pipe(

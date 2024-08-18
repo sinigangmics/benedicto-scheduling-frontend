@@ -1,3 +1,7 @@
-<div *ngIf="alert" class="container col-md-6 offset-md-3 mt-5">
-    <div [ngClass]="alert.cssClass">{{alert.message}}</div>
+﻿<div
+  *ngFor="let alert of alerts"
+  class="{{ cssClass(alert) }} container col-md-6 offset-md-3 mt-5"
+>
+  <div [innerHTML]="alert.message"></div>
+  <button type="button" class="btn-close" (click)="removeAlert(alert)"></button>
 </div>

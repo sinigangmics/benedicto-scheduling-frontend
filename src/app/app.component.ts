@@ -5,21 +5,13 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AccountService } from './_services';
 import { User } from './_models';
 import { Role } from '../app/_models/role';
-import { AlertComponent } from './_components/alert/alert.component';
-import { MenubarComponent } from './_components/menubar/menubar.component';
+import { AlertComponent } from '../app/_components/alert';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   standalone: true,
-  imports: [
-    NgIf,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    AlertComponent,
-    MenubarComponent,
-  ],
+  imports: [NgIf, RouterOutlet, RouterLink, RouterLinkActive, AlertComponent],
 })
 export class AppComponent {
   Role = Role;
