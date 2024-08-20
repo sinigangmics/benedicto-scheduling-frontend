@@ -1,0 +1,34 @@
+<div class="pt-4 px-4 container">
+  <div class="">
+    <h1>1st Year Enlistment</h1>
+    <p>This section can only be accessed by administrators.</p>
+  </div>
+  <div>
+    <div class="container mt-4">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>COURSE CODE</th>
+            <th>COURSE DESCRIPTION</th>
+            <th>NO. OF UNITS</th>
+            <th>DAY</th>
+            <th>TIME</th>
+            <th>ROOM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let schedule of schedule">
+            <td>{{ schedule.subject_code }}</td>
+            <td>{{ schedule.subject }}</td>
+            <td>{{ schedule.units }}</td>
+            <td>{{ schedule.day }}</td>
+            <td>{{ schedule.start }} - {{ schedule.end }}</td>
+            <td>{{ schedule.location }}</td>
+            <!-- <td>{{ schedule.time }}</td>
+            <td>{{ schedule.room }}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

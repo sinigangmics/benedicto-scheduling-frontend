@@ -27,6 +27,10 @@ body {
   width: unset !important;
 }
 
+.jqx-scheduler-not-work-time-cell {
+  background: white;
+}
+
 .center-fixed-dialog {
   position: fixed !important;
   top: 50% !important;

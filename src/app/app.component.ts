@@ -5,7 +5,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AccountService } from './_services';
 import { User } from './_models';
 import { Role } from '../app/_models/role';
-import { AlertComponent } from '../app/_components/alert';
+import { AlertComponent } from './_components/alert';
 
 @Component({
   selector: 'app-root',

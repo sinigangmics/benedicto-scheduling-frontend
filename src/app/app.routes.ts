@@ -17,6 +17,9 @@ const adminModule = () =>
 const profileModule = () =>
   import('./profile/profile.module').then((x) => x.ProfileModule);
 
+const scheduleModule = () =>
+  import('./schedule/schedule.module').then((x) => x.scheduleModule);
+
 export const APP_ROUTES: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
 
@@ -33,12 +36,12 @@ export const APP_ROUTES: Routes = [
     loadChildren: teachersModule,
     canActivate: [authGuard],
   },
-  // {
-  //   path: 'schedule',
-  //   loadChildren: scheduleModule,
-  //   canActivate: [AuthGuard],
-  //   data: { roles: [Role.Admin] },
-  // },
+  {
+    path: 'schedule',
+    loadChildren: scheduleModule,
+    canActivate: [authGuard],
+    data: { roles: [Role.Admin] },
+  },
   {
     path: 'admin',
     loadChildren: adminModule,
