@@ -1,8 +1,6 @@
-import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { jqxSchedulerComponent } from 'jqwidgets-ng/jqxscheduler';
 import { SharedService } from 'src/app/shared.service';
-// import { jsPDF } from 'jspdf';
-// import html2canvas from 'html2canvas';
 
 @Component({
   templateUrl: 'firstSched.component.html',
@@ -10,38 +8,8 @@ import { SharedService } from 'src/app/shared.service';
 export class firstSchedComponent implements AfterViewInit {
   @ViewChild('schedulerReference')
   scheduler!: jqxSchedulerComponent;
-  // @ViewChild('pdfContent') pdfContent: ElementRef;
 
   constructor(private sharedService: SharedService) {}
-
-  // makePDF() {
-  //   html2canvas(this.pdfContent.nativeElement, { scale: 2 }).then((canvas) => {
-  //     const contentDataURL = canvas.toDataURL('image/png');
-  //     const pdf = new jsPDF('p', 'mm', 'a4');
-
-  //     const imgWidth = 210; // A4 width in mm
-  //     const imgHeight = (canvas.height * imgWidth) / canvas.width;
-  //     const pageHeight = 297; // A4 height in mm
-
-  //     // Calculate the number of pages needed
-  //     let position = 0;
-  //     let heightLeft = imgHeight;
-
-  //     // Add the first image
-  //     pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-  //     heightLeft -= pageHeight;
-
-  //     // Add extra pages if necessary
-  //     while (heightLeft > 0) {
-  //       position = heightLeft - imgHeight;
-  //       pdf.addPage();
-  //       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-  //       heightLeft -= pageHeight;
-  //     }
-
-  //     pdf.save('scheduler.pdf');
-  //   });
-  // }
 
   ngAfterViewInit(): void {
     this.scheduler.ensureAppointmentVisible('1');
