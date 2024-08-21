@@ -72,7 +72,9 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl(returnUrl);
         },
         error: (error) => {
-          this.alertService.error('Login failed', error);
+          this.alertService.error('Login failed', {
+            keepAfterRouteChange: true,
+          });
           this.loading = false;
         },
       });

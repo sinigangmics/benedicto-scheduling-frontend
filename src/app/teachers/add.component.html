@@ -1,8 +1,8 @@
 <h1 *ngIf="isAddMode">Add Teacher</h1>
 <h1 *ngIf="!isAddMode">Edit Teacher</h1>
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-5">
-  <div class="form-col">
-    <div class="form-col mt-3">
+  <div class="form-col row">
+    <div class="form-col mt-3 col-6">
       <label>First Name</label>
       <input
         type="text"
@@ -14,7 +14,7 @@
         <div *ngIf="f.firstName.errors.required">First Name is required</div>
       </div>
     </div>
-    <div class="form-col mt-3">
+    <div class="form-col mt-3 col-6">
       <label>Last Name</label>
       <input
         type="text"
@@ -27,8 +27,8 @@
       </div>
     </div>
   </div>
-  <div class="form-col">
-    <div class="form-col mt-3">
+  <div class="form-col row">
+    <div class="form-col mt-3 col-6">
       <label>Email</label>
       <input
         type="text"
@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="form-col mt-3">
+    <div class="form-col mt-3 col-6">
       <label>Address</label>
       <input
         type="text"

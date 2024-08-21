@@ -31,12 +31,12 @@
       >
         Teachers</a
       >
-      <a
+      <!-- <a
         routerLink="/profile"
         routerLinkActive="active"
         class="nav-item nav-link d-flex gap-2 align-items-center text-light"
         >Profile</a
-      >
+      > -->
 
       <!-- <a
           *ngIf="account.role === Role.Admin"
@@ -74,7 +74,7 @@
       </button>
 
       <div
-        class="modal"
+        class="modal fade"
         id="exampleModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
@@ -83,12 +83,12 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header" style="border: none">
-              <button
+              <!-- <button
                 type="button"
                 class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-              ></button>
+              ></button> -->
             </div>
             <div class="modal-body text-center">
               <h5 class="text-black fw-bold">
@@ -101,13 +101,22 @@
               <p class="text-body logged-as">
                 Logged In as {{ user.user?.first_name }}
               </p>
-              <a
-                type="button"
-                (click)="logout()"
-                class="btn btn-danger logout-button"
-                data-bs-dismiss="modal"
-                >Logout</a
-              >
+              <div class="d-flex justify-content-center gap-2">
+                <a
+                  type="button"
+                  (click)="logout()"
+                  class="btn btn-danger logout-button"
+                  data-bs-dismiss="modal"
+                  >Logout</a
+                >
+                <a
+                  type="button"
+                  data-bs-dismiss="modal"
+                  class="btn btn-secondary logout-button"
+                >
+                  No
+                </a>
+              </div>
             </div>
             <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -42,6 +42,7 @@ body {
 .alert-container {
   position: fixed;
   bottom: 0;
+  z-index: 9999;
   right: 0;
   max-width: 400px;
 }
@@ -61,7 +62,7 @@ button > img {
 }
 
 .logout-button {
-  width: 100%;
+  width: 50%;
 }
 
 .are-you {
@@ -70,4 +71,19 @@ button > img {
 
 .logged-as {
   font-size: 12px;
+}
+
+.alert-green {
+  background-color: #206527;
+  color: #fff;
+}
+
+.alert-red {
+  background-color: #7c2c2c;
+  color: white;
+}
+
+.alert-blue {
+  background-color: #1f4a7e;
+  color: white;
 }

@@ -93,7 +93,10 @@ export class AddComponent implements OnInit {
           this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: (error) => {
-          this.alertService.error(error);
+          this.alertService.error('Teacher created failed', {
+            keepAfterRouteChange: true,
+            error,
+          });
           this.loading = false;
         },
       });
@@ -111,7 +114,10 @@ export class AddComponent implements OnInit {
           this.router.navigate(['../../'], { relativeTo: this.route });
         },
         error: (error) => {
-          this.alertService.error(error);
+          this.alertService.error('Update failed', {
+            keepAfterRouteChange: true,
+            error,
+          });
           this.loading = false;
         },
       });
