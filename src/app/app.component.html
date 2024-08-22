@@ -19,6 +19,7 @@
       <a
         routerLink="/"
         routerLinkActive="active"
+        (click)="closeDialogOnNavClick()"
         [routerLinkActiveOptions]="{ exact: true }"
         class="nav-item nav-link d-flex gap-2 align-items-center text-light"
       >
@@ -27,6 +28,7 @@
       <a
         routerLink="/teachers"
         routerLinkActive="active"
+        (click)="closeDialogOnNavClick()"
         class="nav-item nav-link d-flex gap-2 align-items-center text-light"
       >
         Teachers</a
@@ -50,12 +52,14 @@
         *ngIf="user.user?.role === Role.Admin"
         routerLink="/prospectus"
         routerLinkActive="active"
+        (click)="closeDialogOnNavClick()"
         class="nav-item nav-link d-flex gap-2 align-items-center text-light"
         >Prospectus</a
       >
       <a
         class="nav-item nav-link d-flex gap-2 align-items-center text-light"
         routerLink="/schedule"
+        (click)="closeDialogOnNavClick()"
         routerLinkActive="active"
         *ngIf="user.user?.role === Role.Admin"
       >
@@ -69,6 +73,7 @@
         class="btn btn-danger d-flex align-items-center justify-content-center gap-1 p-2"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
+        (click)="closeDialogOnNavClick()"
       >
         Logout
       </button>

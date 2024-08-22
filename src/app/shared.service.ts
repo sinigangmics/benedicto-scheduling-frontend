@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { jqxSchedulerComponent } from 'jqwidgets-ng/jqxscheduler';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -7,14 +7,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SharedService {
-  scheduler!: jqxSchedulerComponent; // Define the type of scheduler if possible
-
-  closeDialogOnNavClick = () => {
-    if (this.scheduler) {
-      this.scheduler.closeDialog();
-    }
-  };
-
   readonly APIUrl = 'http://localhost:4000/schedule';
 
   constructor(private http: HttpClient) {}
