@@ -11,7 +11,11 @@ export class SharedService {
 
   constructor(private http: HttpClient) {}
 
-  // FIRST YEAR
+  //^ FIRST YEAR
+  addSchedule(schedule: any): Observable<any> {
+    return this.http.post<any>(`${this.APIUrl}/1st-year`, schedule);
+  }
+
   getSchedules(): Observable<any[]> {
     return this.http.get<any[]>(`${this.APIUrl}/1st-year`);
   }
@@ -24,24 +28,18 @@ export class SharedService {
     return this.http.delete<void>(`${this.APIUrl}/1st-year/${id}`);
   }
 
-  // SECOND YEAR
+  //^ SECOND YEAR
   getSecondSchedules(): Observable<any[]> {
     return this.http.get<any[]>(`${this.APIUrl}/2nd-year`);
   }
 
-  getThirdSchedules(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.APIUrl}/3rd-year`);
-  }
-
-  addSchedule(schedule: any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(`${this.APIUrl}/1st-year`, schedule, {
-      headers,
-    });
-  }
-
   addSecondSchedule(schedule: any): Observable<any> {
     return this.http.post<any>(`${this.APIUrl}/2nd-year`, schedule);
+  }
+
+  //^ THIRD YEAR
+  getThirdSchedules(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.APIUrl}/3rd-year`);
   }
 
   addThirdSchedule(schedule: any): Observable<any> {

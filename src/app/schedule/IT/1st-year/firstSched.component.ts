@@ -18,16 +18,7 @@ export class firstSchedComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.scheduler.ensureAppointmentVisible('1');
 
-    if (localStorage.getItem('scheduleUpdated') === 'true') {
-      // Display the success alert
-      this.alertService.success('Updated schedule successful', {
-        keepAfterRouteChange: true,
-      });
-
-      // Remove the flag from localStorage to prevent repeated alerts
-      localStorage.removeItem('scheduleUpdated');
-    }
-
+    //^ ADD ALERT
     if (localStorage.getItem('scheduleAdded') === 'true') {
       // Display the success alert
       this.alertService.success('Added schedule successful', {
@@ -38,6 +29,18 @@ export class firstSchedComponent implements AfterViewInit {
       localStorage.removeItem('scheduleAdded');
     }
 
+    //^ UPDATED ALERT
+    if (localStorage.getItem('scheduleUpdated') === 'true') {
+      // Display the success alert
+      this.alertService.success('Updated schedule successful', {
+        keepAfterRouteChange: true,
+      });
+
+      // Remove the flag from localStorage to prevent repeated alerts
+      localStorage.removeItem('scheduleUpdated');
+    }
+
+    //^ DELETE ALERT
     if (localStorage.getItem('scheduleDeleted') === 'true') {
       // Display the success alert
       this.alertService.success('Delete schedule successful', {
@@ -81,7 +84,7 @@ export class firstSchedComponent implements AfterViewInit {
     });
   }
 
-  // ADD APPOINTMENT
+  //^ ADD APPOINTMENT
   AppointmentAdd(event: any): void {
     const appointment = event.args.appointment.originalData;
 
@@ -160,6 +163,7 @@ export class firstSchedComponent implements AfterViewInit {
     });
   }
 
+  //^ UPDATE APPOINTMENT
   AppointmentUpdate(event: any): void {
     const appointment = event.args.appointment.originalData;
 
@@ -232,7 +236,7 @@ export class firstSchedComponent implements AfterViewInit {
       });
   }
 
-  // DLETE APPOINTMENT
+  //^ DELETE APPOINTMENT
   AppointmentDelete(event: any): void {
     const appointment = event.args.appointment.originalData;
 
