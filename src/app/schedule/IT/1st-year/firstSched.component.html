@@ -22,6 +22,8 @@
     [resources]="resources"
     [views]="views"
     (onAppointmentAdd)="AppointmentAdd($event)"
+    (onAppointmentChange)="AppointmentUpdate($event)"
+    (onAppointmentDelete)="AppointmentDelete($event)"
     [editDialogCreate]="editDialogCreate"
     [editDialogOpen]="editDialogOpen"
     style="margin: 0 auto"

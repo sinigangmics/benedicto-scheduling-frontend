@@ -11,10 +11,20 @@ export class SharedService {
 
   constructor(private http: HttpClient) {}
 
+  // FIRST YEAR
   getSchedules(): Observable<any[]> {
     return this.http.get<any[]>(`${this.APIUrl}/1st-year`);
   }
 
+  updateSchedule(id: number, schedule: any): Observable<any> {
+    return this.http.put(`${this.APIUrl}/1st-year/${id}`, schedule);
+  }
+
+  deleteSchedule(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.APIUrl}/1st-year/${id}`);
+  }
+
+  // SECOND YEAR
   getSecondSchedules(): Observable<any[]> {
     return this.http.get<any[]>(`${this.APIUrl}/2nd-year`);
   }
@@ -37,10 +47,6 @@ export class SharedService {
   addThirdSchedule(schedule: any): Observable<any> {
     return this.http.post<any>(`${this.APIUrl}/3rd-year`, schedule);
   }
-
-  // updateSchedule(id: number, schedule: any): Observable<any> {
-  //   return this.http.put(`${this.APIUrl}/${id}`, schedule);
-  // }
 
   // deleteSchedule(id: number): Observable<any> {
   //   return this.http.delete(`${this.APIUrl}/${id}`);

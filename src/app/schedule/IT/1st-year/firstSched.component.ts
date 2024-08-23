@@ -17,6 +17,36 @@ export class firstSchedComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.scheduler.ensureAppointmentVisible('1');
+
+    if (localStorage.getItem('scheduleUpdated') === 'true') {
+      // Display the success alert
+      this.alertService.success('Updated schedule successful', {
+        keepAfterRouteChange: true,
+      });
+
+      // Remove the flag from localStorage to prevent repeated alerts
+      localStorage.removeItem('scheduleUpdated');
+    }
+
+    if (localStorage.getItem('scheduleAdded') === 'true') {
+      // Display the success alert
+      this.alertService.success('Added schedule successful', {
+        keepAfterRouteChange: true,
+      });
+
+      // Remove the flag from localStorage to prevent repeated alerts
+      localStorage.removeItem('scheduleAdded');
+    }
+
+    if (localStorage.getItem('scheduleDeleted') === 'true') {
+      // Display the success alert
+      this.alertService.success('Delete schedule successful', {
+        keepAfterRouteChange: true,
+      });
+
+      // Remove the flag from localStorage to prevent repeated alerts
+      localStorage.removeItem('scheduleDeleted');
+    }
   }
 
   generateAppointments(): any {
@@ -113,6 +143,9 @@ export class firstSchedComponent implements AfterViewInit {
         appointment.id = response.id;
         this.source.localdata.push(appointment);
         this.scheduler.source(this.dataAdapter);
+
+        localStorage.setItem('scheduleAdded', 'true');
+
         window.location.reload();
       },
 
@@ -125,6 +158,106 @@ export class firstSchedComponent implements AfterViewInit {
         console.log('asdasd');
       },
     });
+  }
+
+  AppointmentUpdate(event: any): void {
+    const appointment = event.args.appointment.originalData;
+
+    const subject_code = $('#subjectCode').val();
+    const units = $('#units').val();
+    const subject = $('#subject').val();
+    const room = $('#room').val();
+
+    const startDate = new Date(appointment.start);
+
+    // If you need the name of the day instead of the numeric value
+    const daysOfWeek: { [key: string]: string } = {
+      SU: 'Sunday',
+      MO: 'M',
+      TU: 'T',
+      WE: 'W',
+      TH: 'TH',
+      FR: 'F',
+      SA: 'S',
+    };
+
+    // Extract and parse the recurrence pattern to get the days of the week
+    const recurrencePattern = appointment.recurrencePattern?.toString() ?? '';
+    const matchedDays = recurrencePattern.match(/BYDAY=([^;]+)/);
+    const dayNames = matchedDays
+      ? matchedDays[1]
+          .split(',')
+          .map((day: keyof typeof daysOfWeek) => daysOfWeek[day])
+      : [
+          daysOfWeek[
+            Object.keys(daysOfWeek)[
+              startDate.getDay()
+            ] as keyof typeof daysOfWeek
+          ],
+        ];
+
+    const dayName = dayNames.join(''); // Combine day names, e.g., "M, T"
+
+    const updatedAppointment = {
+      subject_code: subject_code,
+      subject: subject,
+      units: units,
+      room: room,
+      start: new Date(startDate),
+      end: new Date(appointment.end),
+      recurrencePattern: recurrencePattern,
+      day: dayName, // Add the combined day names
+      background: appointment.background,
+    };
+
+    // Assume appointment.id is available in the event or the originalData
+    this.sharedService
+      .updateSchedule(appointment.id, updatedAppointment)
+      .subscribe({
+        next: (response) => {
+          // Handle successful update
+          console.log('Appointment updated successfully', response);
+          this.source.localdata = this.source.localdata.map(
+            (item: { id: any }) =>
+              item.id === appointment.id ? updatedAppointment : item
+          );
+          this.scheduler.source(this.dataAdapter);
+          localStorage.setItem('scheduleUpdated', 'true');
+          window.location.reload();
+        },
+        error: (error) => {
+          // Handle error during update
+          console.error('Error updating appointment', error);
+        },
+      });
+  }
+
+  // DLETE APPOINTMENT
+  AppointmentDelete(event: any): void {
+    const appointment = event.args.appointment.originalData;
+
+    if (confirm('Are you sure you want to delete this appointment?')) {
+      this.sharedService.deleteSchedule(appointment.id).subscribe({
+        next: () => {
+          console.log('Appointment deleted successfully');
+          // Remove the appointment from the local data source
+          this.source.localdata = this.source.localdata.filter(
+            (item: { id: any }) => item.id !== appointment.id
+          );
+          this.scheduler.source(this.dataAdapter);
+          localStorage.setItem('scheduleDeleted', 'true');
+
+          window.location.reload();
+        },
+        error: (error) => {
+          this.alertService.error('Error deleting schedule', {
+            keepAfterRouteChange: true,
+            error,
+          });
+          console.error('Error deleting appointment', error);
+        },
+      });
+    }
   }
 
   source: any = {
@@ -231,6 +364,7 @@ export class firstSchedComponent implements AfterViewInit {
     fields.timeZoneContainer.hide();
     fields.allDayContainer.hide();
     fields.locationContainer.hide();
+    fields.resetExceptionsContainer.hide();
 
     setTimeout(() => {
       $(dialog).closest('.jqx-window').addClass('center-fixed-dialog');
