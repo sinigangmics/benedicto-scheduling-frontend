@@ -2,6 +2,11 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { jqxSchedulerComponent } from 'jqwidgets-ng/jqxscheduler';
 import { SharedService } from 'src/app/shared.service';
 import { AlertService } from '@app/_services';
+import { Teachers } from '@app/_models/teachers';
+
+import { first } from 'rxjs';
+import * as $ from 'jquery';
+import { TeacherService } from '@app/_services/teacher.service';
 
 @Component({
   templateUrl: 'firstSched.component.html',
@@ -9,14 +14,21 @@ import { AlertService } from '@app/_services';
 export class firstSchedComponent implements AfterViewInit {
   @ViewChild('schedulerReference')
   scheduler!: jqxSchedulerComponent;
+  teachers: Teachers[] = [];
 
   constructor(
     private sharedService: SharedService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private teacherService: TeacherService
   ) {}
 
   ngAfterViewInit(): void {
     this.scheduler.ensureAppointmentVisible('1');
+
+    this.teacherService
+      .getAll()
+      .pipe(first())
+      .subscribe((teachers) => (this.teachers = teachers));
 
     //^ ADD ALERT
     if (localStorage.getItem('scheduleAdded') === 'true') {
@@ -60,6 +72,7 @@ export class firstSchedComponent implements AfterViewInit {
           subject_code: event.subject_code,
           subject: event.subject,
           units: event.units,
+          teacher: event.teacher,
           room: event.room,
           start: new Date(event.start),
           end: new Date(event.end),
@@ -92,6 +105,7 @@ export class firstSchedComponent implements AfterViewInit {
     const units = $('#units').val();
     const subject = $('#subject').val();
     const room = $('#room').val();
+    const teacher = $('#teacher').val();
 
     const startDate = new Date(appointment.start);
 
@@ -128,6 +142,7 @@ export class firstSchedComponent implements AfterViewInit {
       subject: subject,
       units: units,
       room: room,
+      teacher: teacher,
       start: new Date(startDate),
       end: new Date(appointment.end),
       recurrencePattern: recurrencePattern,
@@ -144,6 +159,7 @@ export class firstSchedComponent implements AfterViewInit {
         //   keepAfterRouteChange: true,
         // });
         appointment.id = response.id;
+
         this.source.localdata.push(appointment);
         this.scheduler.source(this.dataAdapter);
 
@@ -153,11 +169,13 @@ export class firstSchedComponent implements AfterViewInit {
       },
 
       error: (error) => {
-        // this.alertService.error('Error adding schedule', {
-        //   keepAfterRouteChange: true,
-        //   error,
-        // });
-        window.location.reload();
+        this.alertService.error('Error adding schedule', {
+          keepAfterRouteChange: true,
+          error,
+        });
+        console.log(teacher);
+        console.log(units);
+        // window.location.reload();
         console.log('asdasd');
       },
     });
@@ -171,6 +189,7 @@ export class firstSchedComponent implements AfterViewInit {
     const units = $('#units').val();
     const subject = $('#subject').val();
     const room = $('#room').val();
+    const teacher = $('#teacher').val;
 
     const startDate = new Date(appointment.start);
 
@@ -207,6 +226,7 @@ export class firstSchedComponent implements AfterViewInit {
       subject: subject,
       units: units,
       room: room,
+      teacher: teacher,
       start: new Date(startDate),
       end: new Date(appointment.end),
       recurrencePattern: recurrencePattern,
@@ -273,6 +293,7 @@ export class firstSchedComponent implements AfterViewInit {
       { name: 'subject_code', type: 'string' },
       { name: 'units', type: 'string' },
       { name: 'room', type: 'string' },
+      { name: 'teacher', type: 'string' },
       { name: 'day', type: 'string' },
       { name: 'start', type: 'date' },
       { name: 'end', type: 'date' },
@@ -290,6 +311,7 @@ export class firstSchedComponent implements AfterViewInit {
     subject_code: 'subject_code',
     units: 'units',
     room: 'room',
+    teacher: 'teacher',
     from: 'start',
     to: 'end',
     day: 'day',
@@ -357,6 +379,30 @@ export class firstSchedComponent implements AfterViewInit {
     </div>
   </div>`;
     fields.subjectContainer.append(roomContainer);
+
+    let teacherContainer = `
+    <div>
+      <div class="jqx-scheduler-edit-dialog-label">Teacher</div>
+      <div class="jqx-scheduler-edit-dialog-field">
+        <select id="teacher" name="teacher"></select>
+      </div>
+    </div>
+  `;
+
+    fields.subjectContainer.append(teacherContainer);
+
+    const teacherSelect = document.getElementById('teacher');
+
+    if (teacherSelect) {
+      this.teachers.forEach((teacher: any) => {
+        let option = document.createElement('option');
+        option.value = `${teacher.firstName} ${teacher.lastName}`;
+        option.text = `${teacher.firstName} ${teacher.lastName}`;
+        teacherSelect.appendChild(option);
+
+        console.log(option.value);
+      });
+    }
   };
 
   editDialogOpen = (dialog: any, fields: any, editAppointment: any) => {
@@ -381,6 +427,7 @@ export class firstSchedComponent implements AfterViewInit {
         $('#units').val(appointmentData.units);
         $('#subject').val(appointmentData.subject);
         $('#room').val(appointmentData.room);
+        $('#teacher').val(appointmentData.teacher);
       }, 100); // Slight delay to ensure elements are available
     }
   };

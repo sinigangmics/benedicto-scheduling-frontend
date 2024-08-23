@@ -89,7 +89,6 @@ export class AddComponent implements OnInit {
           this.alertService.success('Teacher created successfully', {
             keepAfterRouteChange: true,
           });
-
           this.router.navigate(['../'], { relativeTo: this.route });
         },
         error: (error) => {
