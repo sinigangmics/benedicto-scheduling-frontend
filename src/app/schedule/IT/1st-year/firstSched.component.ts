@@ -86,7 +86,7 @@ export class firstSchedComponent implements AfterViewInit {
         this.source.localdata = appointments;
         this.dataAdapter = new jqx.dataAdapter(this.source);
         this.scheduler.source(this.dataAdapter);
-        console.log(this.source.localdata);
+        // console.log(this.source.localdata);
       },
       error: (error) => {
         this.alertService.error('Error loading schedules', {
@@ -189,7 +189,7 @@ export class firstSchedComponent implements AfterViewInit {
     const units = $('#units').val();
     const subject = $('#subject').val();
     const room = $('#room').val();
-    const teacher = $('#teacher').val;
+    const teacher = $('#teacher').val();
 
     const startDate = new Date(appointment.start);
 

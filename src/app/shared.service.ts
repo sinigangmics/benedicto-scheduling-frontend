@@ -37,6 +37,14 @@ export class SharedService {
     return this.http.post<any>(`${this.APIUrl}/2nd-year`, schedule);
   }
 
+  updateSecondSchedule(id: number, schedule: any): Observable<any> {
+    return this.http.put(`${this.APIUrl}/2nd-year/${id}`, schedule);
+  }
+
+  deleteSecondSchedule(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.APIUrl}/2nd-year/${id}`);
+  }
+
   //^ THIRD YEAR
   getThirdSchedules(): Observable<any[]> {
     return this.http.get<any[]>(`${this.APIUrl}/3rd-year`);
