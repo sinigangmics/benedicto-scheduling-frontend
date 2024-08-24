@@ -54,6 +54,32 @@ export class SharedService {
     return this.http.post<any>(`${this.APIUrl}/3rd-year`, schedule);
   }
 
+  updateThirdSchedule(id: number, schedule: any): Observable<any> {
+    return this.http.put(`${this.APIUrl}/3rd-year/${id}`, schedule);
+  }
+
+  deleteThirdSchedule(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.APIUrl}/3rd-year/${id}`);
+  }
+
+  //^ FOURTH YEAR
+
+  getFourthSchedules(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.APIUrl}/4th-year`);
+  }
+
+  addFourthSchedule(schedule: any): Observable<any> {
+    return this.http.post<any>(`${this.APIUrl}/4th-year`, schedule);
+  }
+
+  updateFourthSchedule(id: number, schedule: any): Observable<any> {
+    return this.http.put(`${this.APIUrl}/4th-year/${id}`, schedule);
+  }
+
+  deleteFourthSchedule(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.APIUrl}/4th-year/${id}`);
+  }
+
   // deleteSchedule(id: number): Observable<any> {
   //   return this.http.delete(`${this.APIUrl}/${id}`);
   // }

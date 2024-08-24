@@ -18,11 +18,11 @@ import { first } from 'rxjs';
 import * as $ from 'jquery';
 
 @Component({
-  templateUrl: 'thirdSched.component.html',
+  templateUrl: 'fourthSched.component.html',
 })
-export class thirdSchedComponent implements AfterViewInit {
-  @ViewChild('schedulerReference3')
-  scheduler3!: jqxSchedulerComponent;
+export class fourthSchedComponent implements AfterViewInit {
+  @ViewChild('schedulerReference4')
+  scheduler4!: jqxSchedulerComponent;
 
   teachers: Teachers[] = [];
 
@@ -33,7 +33,7 @@ export class thirdSchedComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    this.scheduler3.ensureAppointmentVisible('1');
+    this.scheduler4.ensureAppointmentVisible('1');
 
     this.teacherService
       .getAll()
@@ -75,7 +75,7 @@ export class thirdSchedComponent implements AfterViewInit {
   }
 
   generateAppointments(): any {
-    this.sharedService.getThirdSchedules().subscribe(
+    this.sharedService.getFourthSchedules().subscribe(
       (data) => {
         const appointments = data.map((event) => ({
           id: event.id.toString(),
@@ -94,7 +94,7 @@ export class thirdSchedComponent implements AfterViewInit {
 
         this.source.localdata = appointments;
         this.dataAdapter = new jqx.dataAdapter(this.source);
-        this.scheduler3.source(this.dataAdapter);
+        this.scheduler4.source(this.dataAdapter);
         console.log(this.source.localdata);
       },
       (error) => {
@@ -157,7 +157,7 @@ export class thirdSchedComponent implements AfterViewInit {
 
     console.log('recurrncepattern: ', typeof appointment.recurrencePattern);
 
-    this.sharedService.addThirdSchedule(newAppointment).subscribe({
+    this.sharedService.addFourthSchedule(newAppointment).subscribe({
       next: (response) => {
         // this.alertService.success('Success adding schedule', {
         //   keepAfterRouteChange: true,
@@ -165,7 +165,7 @@ export class thirdSchedComponent implements AfterViewInit {
         appointment.id = response.id;
 
         this.source.localdata.push(appointment);
-        this.scheduler3.source(this.dataAdapter);
+        this.scheduler4.source(this.dataAdapter);
 
         localStorage.setItem('scheduleAdded', 'true');
 
@@ -240,7 +240,7 @@ export class thirdSchedComponent implements AfterViewInit {
 
     // Assume appointment.id is available in the event or the originalData
     this.sharedService
-      .updateThirdSchedule(appointment.id, updatedAppointment)
+      .updateFourthSchedule(appointment.id, updatedAppointment)
       .subscribe({
         next: (response) => {
           // Handle successful update
@@ -249,7 +249,7 @@ export class thirdSchedComponent implements AfterViewInit {
             (item: { id: any }) =>
               item.id === appointment.id ? updatedAppointment : item
           );
-          this.scheduler3.source(this.dataAdapter);
+          this.scheduler4.source(this.dataAdapter);
           localStorage.setItem('scheduleUpdated', 'true');
           window.location.reload();
         },
@@ -265,14 +265,14 @@ export class thirdSchedComponent implements AfterViewInit {
     const appointment = event.args.appointment.originalData;
 
     if (confirm('Are you sure you want to delete this appointment?')) {
-      this.sharedService.deleteThirdSchedule(appointment.id).subscribe({
+      this.sharedService.deleteFourthSchedule(appointment.id).subscribe({
         next: () => {
           console.log('Appointment deleted successfully');
           // Remove the appointment from the local data source
           this.source.localdata = this.source.localdata.filter(
             (item: { id: any }) => item.id !== appointment.id
           );
-          this.scheduler3.source(this.dataAdapter);
+          this.scheduler4.source(this.dataAdapter);
           localStorage.setItem('scheduleDeleted', 'true');
 
           window.location.reload();

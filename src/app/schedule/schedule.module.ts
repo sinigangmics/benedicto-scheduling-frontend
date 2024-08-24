@@ -11,12 +11,14 @@ import { ScheduleComponent } from './schedule.component';
 import { firstSchedComponent } from './IT/1st-year/firstSched.component';
 import { secondSchedComponent } from './IT/2nd-year/secondSched.component';
 import { thirdSchedComponent } from './IT/3rd-year/thirdSched.component';
+import { fourthSchedComponent } from './IT/4th-year/fourthSched.component';
 import { allSchedComponent } from './IT/all/allSched.component';
 
 // ENLISTMENT
 import { firstEnlistmentComponent } from './IT/1st-year/firstEnlistment.component';
 import { secondEnlistmentComponent } from './IT/2nd-year/secondEnlistment.component';
 import { thirdEnlistmentComponent } from './IT/3rd-year/thirdEnlistment.component';
+import { fourthEnlistmentComponent } from './IT/4th-year/fourthEnlistment.component';
 
 @NgModule({
   imports: [
@@ -30,12 +32,14 @@ import { thirdEnlistmentComponent } from './IT/3rd-year/thirdEnlistment.componen
     firstSchedComponent,
     secondSchedComponent,
     thirdSchedComponent,
+    fourthSchedComponent,
     allSchedComponent,
 
     // ENLISTMENT
     firstEnlistmentComponent,
     secondEnlistmentComponent,
     thirdEnlistmentComponent,
+    fourthEnlistmentComponent,
 
     LayoutComponent,
     ScheduleComponent,

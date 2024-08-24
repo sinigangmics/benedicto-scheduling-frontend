@@ -6,7 +6,7 @@ import { SharedService } from 'src/app/shared.service';
   templateUrl: 'allSched.component.html',
 })
 export class allSchedComponent implements AfterViewInit {
-  @ViewChild('schedulerReference4') scheduler4!: jqxSchedulerComponent;
+  @ViewChild('schedulerReference5') scheduler5!: jqxSchedulerComponent;
 
   source: any = {
     dataType: 'array',
@@ -91,8 +91,8 @@ export class allSchedComponent implements AfterViewInit {
 
         this.source.localdata = appointments;
         this.dataAdapter = new jqx.dataAdapter(this.source);
-        if (this.scheduler4) {
-          this.scheduler4.source(this.dataAdapter); // Refresh the scheduler to apply the data
+        if (this.scheduler5) {
+          this.scheduler5.source(this.dataAdapter); // Refresh the scheduler to apply the data
         }
       },
       error: (error) => {
@@ -123,12 +123,73 @@ export class allSchedComponent implements AfterViewInit {
         // Merge or replace localdata as needed, e.g., by concatenating
         this.source.localdata = [...this.source.localdata, ...appointments];
         this.dataAdapter = new jqx.dataAdapter(this.source);
-        if (this.scheduler4) {
-          this.scheduler4.source(this.dataAdapter);
+        if (this.scheduler5) {
+          this.scheduler5.source(this.dataAdapter);
         }
       },
       error: (error) => {
         console.error('Error loading second schedules:', error);
+      },
+    });
+    this.sharedService.getThirdSchedules().subscribe({
+      next: (data) => {
+        const appointments = data.map((event) => ({
+          id: event.id.toString(),
+          subject_code: event.subject_code,
+          subject: event.subject,
+          units: event.units,
+          teacher: event.teacher,
+          room: event.room,
+          start: new Date(event.start),
+          end: new Date(event.end),
+          day: event.dayName,
+          draggable: false,
+          resizable: false,
+          readOnly: true,
+          recurrencePattern: event.recurrencePattern,
+          background: event.background,
+        }));
+
+        // Merge or replace localdata as needed, e.g., by concatenating
+        this.source.localdata = [...this.source.localdata, ...appointments];
+        this.dataAdapter = new jqx.dataAdapter(this.source);
+        if (this.scheduler5) {
+          this.scheduler5.source(this.dataAdapter);
+        }
+      },
+      error: (error) => {
+        console.error('Error loading third schedules:', error);
+      },
+    });
+
+    this.sharedService.getFourthSchedules().subscribe({
+      next: (data) => {
+        const appointments = data.map((event) => ({
+          id: event.id.toString(),
+          subject_code: event.subject_code,
+          subject: event.subject,
+          units: event.units,
+          teacher: event.teacher,
+          room: event.room,
+          start: new Date(event.start),
+          end: new Date(event.end),
+          day: event.dayName,
+          draggable: false,
+          resizable: false,
+          readOnly: true,
+          recurrencePattern: event.recurrencePattern,
+          background: event.background,
+        }));
+
+        // Merge or replace localdata as needed, e.g., by concatenating
+        this.source.localdata = [...this.source.localdata, ...appointments];
+        this.dataAdapter = new jqx.dataAdapter(this.source);
+        if (this.scheduler5) {
+          this.scheduler5.source(this.dataAdapter);
+        }
+      },
+      error: (error) => {
+        console.error('Error loading fourth schedules:', error);
       },
     });
   }
