@@ -87,3 +87,8 @@ button > img {
   background-color: #1f4a7e;
   color: white;
 }
+
+.schedule-container {
+  margin: 0 auto;
+  max-width: 1440px;
+}

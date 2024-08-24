@@ -9,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { firstSchedComponent } from './IT/1st-year/firstSched.component';
 import { secondSchedComponent } from './IT/2nd-year/secondSched.component';
 import { thirdSchedComponent } from './IT/3rd-year/thirdSched.component';
+import { allSchedComponent } from './IT/all/allSched.component';
 
 import { firstEnlistmentComponent } from './IT/1st-year/firstEnlistment.component';
 import { secondEnlistmentComponent } from './IT/2nd-year/secondEnlistment.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: '2nd-year/enlistment', component: secondEnlistmentComponent },
       { path: '3rd-year', component: thirdSchedComponent },
       { path: '3rd-year/enlistment', component: thirdEnlistmentComponent },
+      { path: 'all-year', component: allSchedComponent },
       // { path: '4th-year', component: ProspectusFourthComponent },
       { path: '', component: LayoutComponent },
     ],

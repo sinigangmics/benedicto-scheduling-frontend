@@ -27,9 +27,14 @@
           <td>{{ teacher.address }}</td>
           <td>{{ teacher.phoneNumber }}</td>
           <td>
-            <a class="btn btn-primary" routerLink="edit/{{ teacher.id }}"
-              >Edit</a
-            >
+            <div class="d-flex gap-2">
+              <a class="btn btn-success" routerLink="view/{{ teacher.id }}"
+                >View</a
+              >
+              <a class="btn btn-primary" routerLink="edit/{{ teacher.id }}"
+                >Edit</a
+              >
+            </div>
           </td>
         </tr>
       </tbody>
