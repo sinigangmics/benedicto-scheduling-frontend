@@ -71,22 +71,27 @@
     </div>
   </div>
 
-  <div class="form-group mt-3">
-    <button [disabled]="loading" class="btn btn-primary">
-      <span
-        *ngIf="loading"
-        class="spinner-border spinner-border-sm mr-1"
-      ></span>
-      Save
-    </button>
-    <button
-      (click)="onDelete()"
-      class="btn btn-danger ml-2"
-      [disabled]="loading"
-      *ngIf="isEditPage"
-    >
-      Delete
-    </button>
-    <a routerLink="/teachers" class="btn btn-secondary ml-2">Cancel</a>
+  <div class="form-group mt-3 d-flex justify-content-between">
+    <div>
+      <button [disabled]="loading" class="btn btn-primary">
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm mr-1"
+        ></span>
+        Save
+      </button>
+      <a routerLink="/teachers" class="btn btn-secondary ml-2">Cancel</a>
+    </div>
+
+    <div>
+      <button
+        (click)="onDelete()"
+        class="btn btn-danger ml-2"
+        [disabled]="loading"
+        *ngIf="isEditPage"
+      >
+        Delete
+      </button>
+    </div>
   </div>
 </form>

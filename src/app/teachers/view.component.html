@@ -1,0 +1,3 @@
+<h1 *ngIf="teacher">{{ teacher.firstName }} {{ teacher.lastName }}</h1>
+<h1 *ngIf="!teacher && !loading">Teacher not found</h1>
+<h1 *ngIf="loading">Loading...</h1>

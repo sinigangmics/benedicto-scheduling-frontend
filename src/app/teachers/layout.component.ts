@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { TeacherService } from '../_services/teacher.service';
 import { Teachers } from '../_models/teachers';
 
@@ -11,11 +10,7 @@ export class LayoutComponent implements OnInit {
   loading = false;
   id?: string;
 
-  constructor(
-    private teacherService: TeacherService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor(private teacherService: TeacherService) {}
 
   ngOnInit() {
     this.teacherService
@@ -23,20 +18,4 @@ export class LayoutComponent implements OnInit {
       .pipe(first())
       .subscribe((teachers) => (this.teachers = teachers));
   }
-
-  // loadTeachers() {
-  //   this.teacherService.getAll().subscribe((data: Teachers[]) => {
-  //     this.teachers = data;
-  //   });
-  // }
-
-  // deleteAccount(id: string) {
-  //     const account = this.teachers.find(x => x.id === id);
-  //     account.isDeleting = true;
-  //     this.teacherService.delete(id)
-  //         .pipe(first())
-  //         .subscribe(() => {
-  //             this.teachers = this.teachers.filter(x => x.id !== id)
-  //         });
-  // }
 }
