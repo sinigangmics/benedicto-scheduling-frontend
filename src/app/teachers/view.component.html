@@ -1,3 +1,36 @@
 <h1 *ngIf="teacher">{{ teacher.firstName }} {{ teacher.lastName }}</h1>
 <h1 *ngIf="!teacher && !loading">Teacher not found</h1>
 <h1 *ngIf="loading">Loading...</h1>
+
+<!-- teacher-schedules.component.html -->
+<div class="main-body p-0">
+  <!-- teacher-schedules.component.html -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Subject Code</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Units</th>
+        <th scope="col">Room</th>
+        <th scope="col">Start</th>
+        <th scope="col">End</th>
+        <th scope="col">Day</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let schedule of schedules">
+        <td>{{ schedule.subject_code }}</td>
+        <td>{{ schedule.subject }}</td>
+        <td>{{ schedule.units }}</td>
+        <td>{{ schedule.room }}</td>
+        <td>{{ schedule.start }}</td>
+        <td>{{ schedule.end }}</td>
+        <td>{{ schedule.day }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="!schedules.length">
+  <p>No schedules found for the teacher.</p>
+</div>

@@ -63,4 +63,8 @@ export class TeacherService {
       })
     );
   }
+
+  getTeacherSchedules(teacherId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${baseUrl}/schedules/${teacherId}`);
+  }
 }
