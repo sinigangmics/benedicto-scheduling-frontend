@@ -330,14 +330,12 @@ export class secondSchedComponent implements AfterViewInit {
         <div class="jqx-scheduler-edit-dialog-label pr-0" style="padding-right: 0; padding-left: 0; ">Subject Code</div>
         <div class="jqx-scheduler-edit-dialog-field">
           <select id="subjectCode" name="subjectCode">
-            <option value="IT110">IT110</option>
-            <option value="IT111">IT111</option>
-            <option value="UTS">UTS</option>
-            <option value="MathWorld">MathWorld</option>
-             <option value="Fil 1">Fil 1</option>
-            <option value="PE 1">PE 1</option>
-            <option value="NSTP 1">NSTP 1</option>
-            <option value="MathPrep">MathPrep</option>
+            <option value="IT210">IT210</option>
+            <option value="IT211">IT211</option>
+            <option value="IT221">IT221</option>
+            <option value="CW">CW</option>
+            <option value="ArtApp">ArtApp</option>
+            <option value="PATHFIT">PATHFIT</option>
           </select>
         </div>
       </div>`;
@@ -347,14 +345,13 @@ export class secondSchedComponent implements AfterViewInit {
     <div class="jqx-scheduler-edit-dialog-label">Subject</div>
       <div class="jqx-scheduler-edit-dialog-field">
         <select id="subject" name="subject">
-          <option value="Introduction to Computing">Introduction to Computing</option>
-          <option value="Computer Programming">Computer Programming</option>
-          <option value="Understanding the Self">Understanding the Self</option>
-          <option value="Math in the Modern World">Math in the Modern World</option>
-           <option value="Komunikasyon sa Akademikong Filipino">Komunikasyon sa Akademikong Filipino</option>
-          <option value="Wellness & Fitness">	Wellness & Fitness</option>
-          <option value="National Service Training Prog. 1">	National Service Training Prog. 1</option>
-          <option value="Pre Calculus for Non-STEM">Pre Calculus for Non-STEM</option>
+          <option value="Data Structures & Algorithms">Data Structures & Algorithms</option>
+          <option value="Web Design & Development">Web Design & Development</option>
+          <option value="Digital Logic Design">Digital Logic Design</option>
+          <option value="Networking">Networking</option>
+           <option value="The Contemporary World">The Contemporary World</option>
+          <option value="	Art Appreciation">Art Appreciation</option>
+          <option value="	Individual/Dual Sports">National Service Training Prog. 1</option>
         </select>
       </div>
  `;

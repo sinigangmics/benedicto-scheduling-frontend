@@ -328,14 +328,13 @@ export class thirdSchedComponent implements AfterViewInit {
         <div class="jqx-scheduler-edit-dialog-label pr-0" style="padding-right: 0; padding-left: 0; ">Subject Code</div>
         <div class="jqx-scheduler-edit-dialog-field">
           <select id="subjectCode" name="subjectCode">
-            <option value="IT110">IT110</option>
-            <option value="IT111">IT111</option>
-            <option value="UTS">UTS</option>
-            <option value="MathWorld">MathWorld</option>
-             <option value="Fil 1">Fil 1</option>
-            <option value="PE 1">PE 1</option>
-            <option value="NSTP 1">NSTP 1</option>
-            <option value="MathPrep">MathPrep</option>
+            <option value="IT310">IT310</option>
+            <option value="IT311">IT311</option>
+            <option value="IT312">IT312</option>
+            <option value="IT ELEC 1">IT ELEC 1</option>
+             <option value="ITTEL2">ITTEL2</option>
+            <option value="TECHNO">TECHNO</option>
+            <option value="STAT">STAT</option>
           </select>
         </div>
       </div>`;
@@ -345,14 +344,14 @@ export class thirdSchedComponent implements AfterViewInit {
     <div class="jqx-scheduler-edit-dialog-label">Subject</div>
       <div class="jqx-scheduler-edit-dialog-field">
         <select id="subject" name="subject">
-          <option value="Introduction to Computing">Introduction to Computing</option>
-          <option value="Computer Programming">Computer Programming</option>
-          <option value="Understanding the Self">Understanding the Self</option>
-          <option value="Math in the Modern World">Math in the Modern World</option>
-           <option value="Komunikasyon sa Akademikong Filipino">Komunikasyon sa Akademikong Filipino</option>
-          <option value="Wellness & Fitness">	Wellness & Fitness</option>
-          <option value="National Service Training Prog. 1">	National Service Training Prog. 1</option>
-          <option value="Pre Calculus for Non-STEM">Pre Calculus for Non-STEM</option>
+          <option value="Applications Development and Emerging Technologies">Applications Development and Emerging Technologies</option>
+          <option value="	Operating Systems">	Operating Systems</option>
+          <option value="Human Computer Interaction">Human Computer Interaction</option>
+          <option value="IT ELECTIVE 1">IT ELECTIVE 1</option>
+           <option value="	IT Track Elective II">IT Track Elective II</option>
+          <option value="	Technopreneurship">Technopreneurship</option>
+          <option value="	Statistics & Probability">Statistics & Probability</option>
+
         </select>
       </div>
  `;
