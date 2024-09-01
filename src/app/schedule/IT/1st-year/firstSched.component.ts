@@ -64,6 +64,7 @@ export class firstSchedComponent implements AfterViewInit {
     }
   }
 
+  //^ GET APPOINTMENT
   generateAppointments(): any {
     this.sharedService.getSchedules().subscribe({
       next: (data) => {
@@ -145,7 +146,7 @@ export class firstSchedComponent implements AfterViewInit {
       teacher: teacher,
       start: new Date(startDate),
       end: new Date(appointment.end),
-      recurrencePattern: recurrencePattern,
+      recurrencePattern: recurrencePattern || null,
       day: dayName, // Add the combined day names
       background: appointment.background,
     };
@@ -229,7 +230,7 @@ export class firstSchedComponent implements AfterViewInit {
       teacher: teacher,
       start: new Date(startDate),
       end: new Date(appointment.end),
-      recurrencePattern: recurrencePattern,
+      recurrencePattern: recurrencePattern || null,
       day: dayName, // Add the combined day names
       background: appointment.background,
     };

@@ -152,7 +152,7 @@ export class secondSchedComponent implements AfterViewInit {
       teacher: teacher,
       start: new Date(startDate),
       end: new Date(appointment.end),
-      recurrencePattern: recurrencePattern,
+      recurrencePattern: recurrencePattern || null,
       day: dayName, // Add the combined day names
       background: appointment.background,
     };
@@ -235,7 +235,7 @@ export class secondSchedComponent implements AfterViewInit {
       teacher: teacher,
       start: new Date(startDate),
       end: new Date(appointment.end),
-      recurrencePattern: recurrencePattern,
+      recurrencePattern: recurrencePattern || null,
       day: dayName, // Add the combined day names
       background: appointment.background,
     };
