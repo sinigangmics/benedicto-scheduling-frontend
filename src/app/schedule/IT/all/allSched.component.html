@@ -21,6 +21,9 @@
     [appointmentDataFields]="appointmentDataFields"
     [resources]="resources"
     [views]="views"
+    (onAppointmentAdd)="AppointmentAdd($event)"
+    [editDialogCreate]="editDialogCreate"
+    [editDialogOpen]="editDialogOpen"
     style="margin: 0 auto"
   >
   </jqxScheduler>
