@@ -2,11 +2,28 @@ homepage
 
 - must see teachers subjects
 - must see schedules in every year
+- schedule of events benedicto
 
 subjects
 
-- fix teacher
+- fix teacher (done)
 
 enlistment
 
-- fix time format
+- fix time format (done)
+
+IT SECTION
+
+- must display teacher
+
+SUBJECT
+
+- time error and day (done)
+
+SCHEDULE
+
+- fix time and room conflicts
+
+TEACHERS
+
+- must accept first name with second name

@@ -329,9 +329,10 @@ export class firstSchedComponent implements AfterViewInit {
           <select id="subjectCode" name="subjectCode">
             <option value="IT110">IT110</option>
             <option value="IT111">IT111</option>
+            <option value="ITVG">ITVG</option>
             <option value="UTS">UTS</option>
             <option value="MathWorld">MathWorld</option>
-             <option value="Fil 1">Fil 1</option>
+            <option value="Fil 1">Fil 1</option>
             <option value="PE 1">PE 1</option>
             <option value="NSTP 1">NSTP 1</option>
             <option value="MathPrep">MathPrep</option>
@@ -344,11 +345,15 @@ export class firstSchedComponent implements AfterViewInit {
     <div class="jqx-scheduler-edit-dialog-label">Subject</div>
       <div class="jqx-scheduler-edit-dialog-field">
         <select id="subject" name="subject">
-          <option value="Introduction to Computing">Introduction to Computing</option>
-          <option value="Computer Programming">Computer Programming</option>
+          <option value="Introduction to Computing - LEC">Introduction to Computing - LEC</option>
+          <option value="Introduction to Computing - LAB">Introduction to Computing - LAB</option>
+          <option value="Computer Programming - LEC">Computer Programming - LEC</option>
+          <option value="Computer Programming - LAB">Computer Programming - LAB</option>
+          <option value="Visual Graphics - LEC">Visual Graphics - LEC</option>
+          <option value="Visual Graphics - LAB">Visual Graphics - LAB</option>
           <option value="Understanding the Self">Understanding the Self</option>
           <option value="Math in the Modern World">Math in the Modern World</option>
-           <option value="Komunikasyon sa Akademikong Filipino">Komunikasyon sa Akademikong Filipino</option>
+          <option value="Retorika">Retorika</option>
           <option value="Wellness & Fitness">	Wellness & Fitness</option>
           <option value="National Service Training Prog. 1">	National Service Training Prog. 1</option>
           <option value="Pre Calculus for Non-STEM">Pre Calculus for Non-STEM</option>
@@ -400,14 +405,11 @@ export class firstSchedComponent implements AfterViewInit {
         option.value = `${teacher.firstName} ${teacher.lastName}`;
         option.text = `${teacher.firstName} ${teacher.lastName}`;
         teacherSelect.appendChild(option);
-
-        console.log(option.value);
       });
     }
   };
 
   editDialogOpen = (dialog: any, fields: any, editAppointment: any) => {
-    // fields.repeatContainer.hide();
     fields.subject.hide();
     fields.subjectLabel.hide();
     fields.descriptionContainer.hide();
