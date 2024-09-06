@@ -295,18 +295,15 @@ export class allSchedComponent implements AfterViewInit {
     <div class="jqx-scheduler-edit-dialog-label">Subject</div>
       <div class="jqx-scheduler-edit-dialog-field">
         <select id="subject" name="subject">
-          <option value="Introduction to Computing - LEC">Introduction to Computing - LEC</option>
-          <option value="Introduction to Computing - LAB">Introduction to Computing - LAB</option>
-          <option value="Computer Programming - LEC">Computer Programming - LEC</option>
-          <option value="Computer Programming - LAB">Computer Programming - LAB</option>
-          <option value="Visual Graphics - LEC">Visual Graphics - LEC</option>
-          <option value="Visual Graphics - LAB">Visual Graphics - LAB</option>
-          <option value="Understanding the Self">Understanding the Self</option>
-          <option value="Math in the Modern World">Math in the Modern World</option>
+          <option value="Readings in Philippine History">Readings in Philippine History</option>
+          <option value="Science, Technology and Society">Science, Technology and Society</option>
+          <option value="Physical Education">Physical Education</option>
+          <option value="Introduction to Linguistics">Introduction to Linguistics</option>
           <option value="Retorika">Retorika</option>
-          <option value="Wellness & Fitness">	Wellness & Fitness</option>
-          <option value="National Service Training Prog. 1">	National Service Training Prog. 1</option>
-          <option value="Pre Calculus for Non-STEM">Pre Calculus for Non-STEM</option>
+           <option value="National Service Training Prog. 1">	National Service Training Prog. 1</option>
+          <option value="Language, Culture and Society">Language, Culture and Society</option>
+          <option value="Purposive Communication">Purposive Communication</option>
+          <option value="Understanding the Self">Understanding the Self</option>
         </select>
       </div>
  `;
@@ -331,6 +328,35 @@ export class allSchedComponent implements AfterViewInit {
       <select id="room" name="room">
         <option value="Computer Lab 1">Computer Lab 1</option>
         <option value="Computer Lab 2">Computer Lab 2</option>
+        <option value="301">301</option>
+        <option value="302">302</option>
+        <option value="303">303</option>
+        <option value="304">304</option>
+        <option value="305">305</option>
+        <option value="306">306</option>
+        <option value="307">307</option>
+        <option value="308">308</option>
+        <option value="309">309</option>
+        <option value="310">310</option>
+        <option value="311">311</option>
+        <option value="312">312</option>
+        <option value="313">313</option>
+        <option value="314">314</option>
+        <option value="315">315</option>
+        <option value="316">316</option>
+        <option value="317">317</option>
+        <option value="318">318</option>
+        <option value="319">319</option>
+        <option value="320">320</option>
+        <option value="321">321</option>
+        <option value="323">323</option>
+        <option value="324">324</option>
+        <option value="325">325</option>
+        <option value="326">326</option>
+
+
+
+
       </select>
     </div>
   </div>`;
